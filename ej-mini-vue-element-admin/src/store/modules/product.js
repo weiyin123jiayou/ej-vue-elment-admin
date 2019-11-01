@@ -1,13 +1,14 @@
 import request from '@/utils/request'
 
-import {post,post_array} from '@/utils/request'
+import {post,post_array,get} from '@/utils/request'
 
 export default {
   namespaced:true,
   state:{
     products:[],
     visible:false,
-    title:"添加产品信息"
+    title:"添加产品信息",
+    product:{} //当前产品信息
   },
   getters:{
     productSize(state){
@@ -38,9 +39,17 @@ export default {
     },
     setTitle(state,title){
       state.title = title;
-    }
+    },
+    refreshProduct(state,product){
+      state.product = product;
+    },
   },
   actions:{
+    //通过id查询产品
+    async findProductById(context,id){
+      let response = await get('/product/findById',{id});
+      context.commit('refreshProduct',response.data)
+    },
     async batchDeleteProduct(context,ids){
       // 1. 批量删除
       let response = await post_array("/product/batchDelete",{ids})

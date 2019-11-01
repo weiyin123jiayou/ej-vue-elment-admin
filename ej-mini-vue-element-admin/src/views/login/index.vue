@@ -98,7 +98,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: '123321'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur'}],
@@ -264,7 +264,6 @@ $light_gray:#eee;
   min-height: 100%;
   width: 100%;
   background-color: $bg;
-   
   overflow: hidden;
 
   .login-form {

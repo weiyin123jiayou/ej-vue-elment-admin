@@ -14,7 +14,9 @@
         <el-table-column prop="id" label="编号"></el-table-column>
         <el-table-column prop="realname" label="姓名"></el-table-column>
         <el-table-column prop="telephone" label="手机号"></el-table-column>
-        <el-table-column prop="gender" label="性别"></el-table-column>
+        <el-table-column prop="idCard" label="身份证号"></el-table-column>
+        <el-table-column prop="bankCard" label="银行卡号"></el-table-column>
+        <el-table-column prop="registerTime" label="注册时间"></el-table-column>
         <el-table-column prop="status" label="状态"></el-table-column>
         <el-table-column label="操作">
           <template #default="record">

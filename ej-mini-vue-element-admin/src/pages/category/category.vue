@@ -2,27 +2,12 @@
   <div class="category">
     <h2>栏目管理</h2>
 		<!-- 按钮 -->
-    <!-- <el-row>
-      <el-col :span="18">
-        <el-form :inline="true">
-          <el-form-item label="栏目名称">
-            <el-input v-model="param.name" placeholder="姓名关键字"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <div style="text-align:right">
-              <el-button type="primary" @click="searchHander">查询</el-button>
-            </div>
-          </el-form-item>
-        </el-form>
-      </el-col>
-    </el-row> -->
 		<div>
 			<el-button @click="toAddHandler" size="small" type="primary">添加</el-button>
 			<el-button @click="batchDeleteHandler"  size="small" type="danger">批量删除</el-button>
 		</div>
 		<!-- 表格 -->
 		<div>
-      {{ids}}
       <el-table :data="categories" size="mini"  @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="id" label="编号"></el-table-column>
@@ -70,11 +55,6 @@ export default {
     return {
       category:{},
       ids:[],
-      param:{
-        name:"",
-        page:0,
-        pageSize:5
-      },
       rules:{
         realname: [
           { required: true, message: '请输入姓名', trigger: 'blur' },
@@ -107,13 +87,7 @@ export default {
       // 2. 显示模态框
       this.showModal();
     },
-   searchHander(){
-      this.loadCategories();
-    },
-    async loadCategories(){
-      let response=await post("/category/query",this.param);
-      this.categories=response.data;
-    },
+
     submitHandler(){
       // 校验
       this.$refs.categoryForm.validate((valid)=>{
