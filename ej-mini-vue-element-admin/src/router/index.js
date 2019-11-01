@@ -169,6 +169,38 @@ export const asyncRoutes = [
       }
     ]
   } ,
+  {
+    path: '/category',
+    component: Layout,
+    children: [
+      {
+        path: 'category',
+        component: () => import('@/pages/category/category'),
+        name: 'category',
+        meta: { title: '栏目管理', icon: 'tab' }
+      }
+    ]
+  } ,
+  {
+    path: '/product',
+    component: Layout,
+    children: [
+      {
+        path: 'product',
+        component: () => import('@/pages/product/product'),
+        name: 'category',
+        meta: { title: '产品管理', icon: 'tab' }
+      },
+      {
+        path: 'ProductDetails',
+        hidden:true,
+        component: () => import('@/pages/product/ProductDetails'),
+        name: 'productDetails',
+        meta: { title: '产品详情', icon: 'tab' }
+      }
+    ]
+  },
+  
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
